@@ -1,0 +1,62 @@
+name: NBTRecover
+main: org.psygate.minecraft.nbtrecover.NBTRecover
+version: 0.0.1
+author: psygate (https://github.com/psygate)
+database: false
+
+commands:
+    NBTpurgePlayer:
+        aliases: [nbtpp]
+        descritpion: Purges all player records found. USE THIS WITH CAUTION. MAKE BACKUPS.
+        permission: nbtrecover.player.purge
+        permission-message: You are not allowed to use this.
+        usage: /NBTpurgePlayer <name> (<name> <name> ...)
+    NBTloadInventory:
+        aliases: [nbtli]
+        description: Deletes your current inventory and replaces it with the inventory of the specified player. If there's more than one record, the last one will be used.
+        permission: nbtrecover.player.loadinv
+        permission-message: You are not allowed to use this.
+        usage: /NBTloadInventory <name> <Timestamp>
+    NBTList:
+        aliases: [nbtl]
+        description: Lists found records for a player.
+        permission: nbtrecover.player.list
+        permission-message: You are not allowed to use this.
+        usage: /NBTList <name> (<name> <name> ...)
+    NBTLoadAll:
+        aliases: [nbtla]
+        description: Loads all records for players into chests in front of you.
+        permission: nbtrecover.player.loadall
+        permission-message: You are not allowed to use this.
+        usage: /NBTLoadAll <name> (<name> <name> ...)
+    NBTClearStates:
+        aliases: [nbtcs]
+        description: Clears yours, or all states.
+        permission: nbtrecover.player.clearstates
+        permission-message: You are not allowed to use this.
+        usage: /NBTClearStates (all)
+
+permissions:
+    nbtrecover.*:
+        description: Gives access to all recovery tools.
+        children:
+            nbtrecover.player.purge: true
+            nbtrecover.player.loadinv: true
+            nbtrecover.player.list: true
+            nbtrecover.player.loadall: true
+            nbtrecover.player.clearstates: true
+    nbtrecover.player.purge:
+        description: Allows purging of player records. USE THIS WITH CAUTION. MAKE BACKUPS.
+        default: op
+    nbtrecover.player.loadinv:
+        description: Allows loading of player records.
+        default: op
+    nbtrecover.player.list:
+        description: Allows listing of player records.
+        default: op      
+    nbtrecover.player.loadall:
+        description: Allows loading of player records as chests.
+        default: op
+    nbtrecover.player.clearstates:
+        description: Clears yours, or all states.
+        default: op  
